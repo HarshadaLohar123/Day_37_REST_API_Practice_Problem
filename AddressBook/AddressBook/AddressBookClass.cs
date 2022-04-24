@@ -19,32 +19,26 @@ namespace AddressBook
         public long PhoneNumber;
         public string Email;
 
+        /// <summary>
+        /// Results method for display contact
+        /// </summary>
+        /// <returns></returns>
         public string Result()
         {
             return "\nName is: " + First_Name + " " + Last_Name + "\nAddress: " + Address + "\nCity is " + City +
                 "\nState is " + State + "\nPostal code is: " + PostalCode + "\nPhone: " + PhoneNumber + "\nEmail is " + Email;
         }
     }
+    /// <summary>
+    /// Class for addressbook
+    /// </summary>
     public class AddressBookClass
     {
         public List<Person> person = new List<Person>();
 
-        public void Display()
-        {
-            Console.WriteLine("\nAddressBook is: ");
-            foreach (Person per in person)
-            {
-                Console.WriteLine(per.Result());
-            }
-        }
-
-        public void addPerson(Person p)
-        {
-            person.Add(p);
-            string jsonData = JsonConvert.SerializeObject(person);
-            File.WriteAllText(@"D:\Bridgelabz\Visual Studio Assignment\Day-37-Practice-Problem\AddressBook\AddressBook\ContactDetail.json", jsonData);
-        }
-
+        /// <summary>
+        /// Constructor for initialization
+        /// </summary>
         public AddressBookClass()
         {
             string json = File.ReadAllText(@"D:\Bridgelabz\Visual Studio Assignment\Day-37-Practice-Problem\AddressBook\AddressBook\ContactDetail.json");
@@ -56,47 +50,29 @@ namespace AddressBook
                 person = new List<Person>();
         }
 
-        public void EditPerson(string First_Name)
+        /// <summary>
+        /// Method to display list item
+        /// </summary>
+        public void Display()
         {
-            for (int i = 0; i < person.Count; i++)
+            Console.WriteLine("\nAddressBook is: ");
+            foreach (Person per in person)
             {
-                if (person[i].First_Name == First_Name)
-                {
-                    Console.WriteLine("Enter First Name: ");
-                    person[i].First_Name = Console.ReadLine();
-                    Console.WriteLine("Enter Last Name: ");
-                    person[i].Last_Name = Console.ReadLine();
-                    Console.WriteLine("Enter Address ");
-                    person[i].Address = Console.ReadLine();
-                    Console.WriteLine("Enter City: ");
-                    person[i].City = Console.ReadLine();
-                    Console.WriteLine("Enter State: ");
-                    person[i].State = Console.ReadLine();
-                    Console.WriteLine("Enter pin code: ");
-                    person[i].PostalCode = int.Parse(Console.ReadLine());
-                    Console.WriteLine("Enter Phone Number: ");
-                    person[i].PhoneNumber = long.Parse(Console.ReadLine());
-                    Console.WriteLine("Enter Email id: ");
-                    person[i].Email = Console.ReadLine();
-                }
+                Console.WriteLine(per.Result());
             }
+        }
+
+        /// <summary>
+        /// method to add contacts to contacts book 
+        /// </summary>
+        /// <param name="p"></param>
+        public void addPerson(Person p)
+        {
+            person.Add(p);
             string jsonData = JsonConvert.SerializeObject(person);
             File.WriteAllText(@"D:\Bridgelabz\Visual Studio Assignment\Day-37-Practice-Problem\AddressBook\AddressBook\ContactDetail.json", jsonData);
         }
 
-        public void Remove(string First_Name)
-        {
-            Person pers = null;
-            foreach (Person p in person)
-            {
-                if (p.First_Name == First_Name)
-                {
-                    pers = p;
-                }
-            }
-            person.Remove(pers);
-            string jsonData = JsonConvert.SerializeObject(person);
-            File.WriteAllText(@"D:\Bridgelabz\Visual Studio Assignment\Day-37-Practice-Problem\AddressBook\AddressBook\ContactDetail.json", jsonData);
-        }
     }
+
 }
