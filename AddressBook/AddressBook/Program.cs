@@ -13,6 +13,7 @@ namespace AddressBook
                 Console.WriteLine("\nSelect Any one Operation: ");
                 Console.WriteLine("1. To Add New Person: ");
                 Console.WriteLine("2. To Display Contacts: ");
+                Console.WriteLine("3. To Update Contacts: ");
                 int read = int.Parse(Console.ReadLine());
                 switch (read)
                 {
@@ -48,8 +49,16 @@ namespace AddressBook
                     case 2:
                         ad.Display();
                         break;
-                }
 
+                    case 3:
+                        Console.WriteLine("Please enter the First name to Update that contact: ");
+                        string uname = Console.ReadLine();
+                        ad.UpdatePerson(uname);
+                        break;
+                    default:
+                        Console.WriteLine("Please select valid input: ");
+                        break;
+                }
             }
         }
     }

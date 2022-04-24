@@ -73,6 +73,37 @@ namespace AddressBook
             File.WriteAllText(@"D:\Bridgelabz\Visual Studio Assignment\Day-37-Practice-Problem\AddressBook\AddressBook\ContactDetail.json", jsonData);
         }
 
-    }
+        /// <summary>
+        /// Method for Update  a contact
+        /// </summary>
+        /// <param name="First_Name"></param>
+        public void UpdatePerson(string First_Name)
+        {
+            for (int i = 0; i < person.Count; i++)
+            {
+                if (person[i].First_Name == First_Name)
+                {
+                    Console.WriteLine("Enter First Name: ");
+                    person[i].First_Name = Console.ReadLine();
+                    Console.WriteLine("Enter Last Name: ");
+                    person[i].Last_Name = Console.ReadLine();
+                    Console.WriteLine("Enter Address ");
+                    person[i].Address = Console.ReadLine();
+                    Console.WriteLine("Enter City: ");
+                    person[i].City = Console.ReadLine();
+                    Console.WriteLine("Enter State: ");
+                    person[i].State = Console.ReadLine();
+                    Console.WriteLine("Enter pin code: ");
+                    person[i].PostalCode = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Enter Phone Number: ");
+                    person[i].PhoneNumber = long.Parse(Console.ReadLine());
+                    Console.WriteLine("Enter Email id: ");
+                    person[i].Email = Console.ReadLine();
+                }
+            }
+            string jsonData = JsonConvert.SerializeObject(person);
+            File.WriteAllText(@"D:\Bridgelabz\Visual Studio Assignment\Day-37-Practice-Problem\AddressBook\AddressBook\ContactDetail.json", jsonData);
+        }
 
+    }
 }
