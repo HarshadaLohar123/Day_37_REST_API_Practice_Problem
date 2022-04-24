@@ -105,5 +105,25 @@ namespace AddressBook
             File.WriteAllText(@"D:\Bridgelabz\Visual Studio Assignment\Day-37-Practice-Problem\AddressBook\AddressBook\ContactDetail.json", jsonData);
         }
 
+        /// <summary>
+        /// method for removing a contact
+        /// </summary>
+        /// <param name="First_Name"></param>
+        public void Remove(string First_Name)
+        {
+            Person pers = null;
+            foreach (Person p in person)
+            {
+                if (p.First_Name == First_Name)
+                {
+                    pers = p;
+                }
+            }
+            person.Remove(pers);
+            string jsonData = JsonConvert.SerializeObject(person);
+            File.WriteAllText(@"D:\Bridgelabz\Visual Studio Assignment\Day-37-Practice-Problem\AddressBook\AddressBook\ContactDetail.json", jsonData);
+        }
     }
 }
+
+ 

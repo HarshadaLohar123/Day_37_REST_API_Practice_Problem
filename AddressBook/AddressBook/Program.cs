@@ -6,6 +6,7 @@ namespace AddressBook
     {
         static void Main(string[] args)
         {
+
             Console.WriteLine("Welcome to address book problem ");
             AddressBookClass ad = new AddressBookClass();
             while (true)
@@ -14,6 +15,7 @@ namespace AddressBook
                 Console.WriteLine("1. To Add New Person: ");
                 Console.WriteLine("2. To Display Contacts: ");
                 Console.WriteLine("3. To Update Contacts: ");
+                Console.WriteLine("4. To Delete Contacts: ");
                 int read = int.Parse(Console.ReadLine());
                 switch (read)
                 {
@@ -55,6 +57,13 @@ namespace AddressBook
                         string uname = Console.ReadLine();
                         ad.UpdatePerson(uname);
                         break;
+
+                    case 4:
+                        Console.WriteLine("Please enter the firat name to delete that contact: ");
+                        string dname = Console.ReadLine();
+                        ad.Remove(dname);
+                        break;
+
                     default:
                         Console.WriteLine("Please select valid input: ");
                         break;
